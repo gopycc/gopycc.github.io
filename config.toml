@@ -2,6 +2,7 @@ baseURL = "https://blog.gopy.cc"
 title = "GoPy+"
 theme = "notepadium"
 copyright = "©2020 Gopy.cc"
+publishdir = "docs"
 
 languageCode = "en"  # for the RSS generation
 defaultContentLanguage = "en"
