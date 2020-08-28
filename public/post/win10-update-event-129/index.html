@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>win10周年更新后程序各种卡死，进程无法结束怎么破？&nbsp;&ndash;&nbsp;GoPy&#43;</title><link rel="stylesheet" href="/css/core.min.8e37aa4bbbb66b6b7c09f85a2e32f6da679366495d864510e49e15cbf7ffed8b16ca3511e910ecd3ab899c53cdc913cc.css" integrity="sha384-jjeqS7u2a2t8CfhaLjL22meTZkldhkUQ5J4Vy/f/7YsWyjUR6RDs06uJnFPNyRPM"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="win10周年更新后程序各种卡死，进程无法结束怎么破？" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt /><span class="site name">GoPy+</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about/">About</a></nav></div></span></div><div class="site slogan"><span class="title">Webnotes about golang & python.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">win10周年更新后程序各种卡死，进程无法结束怎么破？</h1><p class="article date">2016-11-04 00:00<span class="reading-time"> • One minute to read</span></p></section><article class="article markdown-body"><p>最近THINKPAD T460P更新了WIN10周年版后程序各种卡死，运行一段时间，各种程序就开始崩溃，进程无法结束，最终只能强制关机。</p>
+<p>这个BUG微软已经确认了，安装了SSD+HDD双硬盘的WIN10系统容易中招。</p>
+<p>查看系统日志出现大片的警告：
+事件ID:129，
+来源：storahci，
+常规：发出了对设备 \Device\RaidPort0 的重置。</p>
+<p>故障原因大致是由于WIN10自带的IDE ATA/ATAPI控制器版本太旧，导致存储控制器不兼容，无法识别硬盘。</p>
+<p>解决办法：安装intel最新的英特尔®快速存储技术 (英特尔® RST) RAID 驱动程序。已安装确认可行。</p>
+<p>下载：https://downloadcenter.intel.com/zh-cn/download/26361/Intel-Rapid-Storage-Technology-Intel-RST-RAID-Driver?v=t</p>
+</article><section class="article labels"><a class="category" href=/categories/debug/tips/>Debug/Tips</a><a class="tag" href=/tags/windows/>Windows</a></section><section class="article author"><img class="avatar" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt><p class="name">gopycc</p><div class="bio">努力做好自已，其他的交给时间</div><div class="details"><a class="item" href="https://github.com/gopycc" target="_blank"><span class="iconfont icon-github"></span>&nbsp;gopycc</a></div>
+</section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/post/golang-wraphandle/"><span class="iconfont icon-article"></span>Golang统一处理HTTP请求中的异常捕获</a></p><p><a class="link" href="/post/git-branching-model/"><span class="iconfont icon-article"></span>GIT分支管理模型</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Gopy.cc</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

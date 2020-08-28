@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>版本管理 on GoPy&#43;</title>
+    <link>/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 版本管理 on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    <lastBuildDate>Sun, 15 Apr 2018 23:30:00 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git cheat sheet 让你不用再去记所有的git命令</title>
+      <link>/post/git-cheat-sheet/</link>
+      <pubDate>Sun, 15 Apr 2018 23:30:00 +0000</pubDate>
+      
+      <guid>/post/git-cheat-sheet/</guid>
+      <description>&lt;p&gt;在 &lt;a href=&#34;http://goinon.org/2018/git-talk/&#34;target=&#34;_blank&#34;&gt;分享一点Git的感受与总结&lt;/a&gt;讲到了vscode中使用git命令行的便利，同时有人在github上分享了一份git的命令手册，转过来备查，愿你也能了然于心。&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&#34;https://github.com/arslanbilal/git-cheat-sheet&#34;&gt;https://github.com/arslanbilal/git-cheat-sheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面开始Git Cheat Sheet的内容&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;索引&#34;&gt;索引&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%85%8d%e7%bd%ae&#34;&gt;配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6&#34;&gt;配置文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%9b%e5%bb%ba&#34;&gt;创建&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9c%ac%e5%9c%b0%e4%bf%ae%e6%94%b9&#34;&gt;本地修改&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%90%9c%e7%b4%a2&#34;&gt;搜索&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%8f%90%e4%ba%a4%e5%8e%86%e5%8f%b2&#34;&gt;提交历史&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%88%86%e6%94%af%e4%b8%8e%e6%a0%87%e7%ad%be&#34;&gt;分支与标签&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%9b%b4%e6%96%b0%e4%b8%8e%e5%8f%91%e5%b8%83&#34;&gt;更新与发布&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e5%90%88%e5%b9%b6%e4%b8%8e%e9%87%8d%e7%bd%ae&#34;&gt;合并与重置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%e6%92%a4%e9%94%80&#34;&gt;撤销&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#git-flow&#34;&gt;Git Flow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>分享一点Git的感受与总结</title>
+      <link>/post/git-talk/</link>
+      <pubDate>Sun, 15 Apr 2018 23:00:00 +0000</pubDate>
+      
+      <guid>/post/git-talk/</guid>
+      <description>GIT入门法宝-客户端 刚开始接触GIT有一个好用的图形客户端非常重要，比如神器Sourcetree，不但界面简单大气而且非常稳定，配合kdi</description>
+      
+    </item>
+    
+    <item>
+      <title>GIT分支管理模型</title>
+      <link>/post/git-branching-model/</link>
+      <pubDate>Fri, 21 Oct 2016 15:14:00 +0000</pubDate>
+      
+      <guid>/post/git-branching-model/</guid>
+      <description>GIT分支管理模型 link: git-branching-model 主分支（Main branches） 项目两个常驻分支： master 主干分支（锁定），仅用于发布新版本，平时不能在上面干活，只做代码</description>
+      
+    </item>
+    
+    <item>
+      <title>使用git svn clone迁移svn仓库</title>
+      <link>/post/my-git-svn-clone/</link>
+      <pubDate>Fri, 30 Sep 2016 13:39:00 +0000</pubDate>
+      
+      <guid>/post/my-git-svn-clone/</guid>
+      <description>&lt;h3 id=&#34;git-svn-clone时间估算&#34;&gt;git svn clone时间估算&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;处理器: Intel(R) Xeon(R) CPU E5-2620 @2.00GHz 2.00Ghz&lt;/li&gt;
+&lt;li&gt;内存：32.0 GB&lt;/li&gt;
+&lt;li&gt;操作系统: Windows Server 2008 R2 Enterprise SP1 64位&lt;/li&gt;
+&lt;li&gt;迁移总提交数：26000&lt;/li&gt;
+&lt;li&gt;迁移总用时：11Hour 40Min&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;git-svn-clone迁移svn仓库&#34;&gt;git svn clone迁移svn仓库&lt;/h3&gt;
+&lt;p&gt;clone命令可以指定很多参数，主要用到这些，你也可以使用git svn help查看完整的参数列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; git svn clone https://172.16.0.241:8443/svn/projects -r 76896:HEAD --no-metadata --authors-file=svnuser.text --trunk=svnproject --branches=svnbranch yourGitProject
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;r指定起止版本号。&lt;/li&gt;
+&lt;li&gt;no-metadata阻止git导出SVN包含的一些无用信息。&lt;/li&gt;
+&lt;li&gt;authors-file必须指定svn帐号在git中的映射。&lt;/li&gt;
+&lt;li&gt;trunk指定导出仓库的主干项目路径。&lt;/li&gt;
+&lt;li&gt;branches指定svn的分支项目路径。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：clone命令需要管理员权限，否则会遇到下面的异常：&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

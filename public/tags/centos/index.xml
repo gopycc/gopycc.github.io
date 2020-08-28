@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CentOS on GoPy&#43;</title>
+    <link>/tags/centos/</link>
+    <description>Recent content in CentOS on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    <lastBuildDate>Fri, 21 Oct 2016 15:11:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CentOS访问Windows共享文件夹</title>
+      <link>/post/centos-share-windows/</link>
+      <pubDate>Fri, 21 Oct 2016 15:11:00 +0000</pubDate>
+      
+      <guid>/post/centos-share-windows/</guid>
+      <description>1. 在地址栏中输入下面内容: smb://Windows IP/Share folder name，smb为Server Message Block协议的简称，是一种IBM协议，运行在TCP/IP协议之上。 从Win</description>
+      
+    </item>
+    
+    <item>
+      <title>CentOS详解TOP命令</title>
+      <link>/post/centos-top/</link>
+      <pubDate>Wed, 19 Oct 2016 10:46:00 +0000</pubDate>
+      
+      <guid>/post/centos-top/</guid>
+      <description>&lt;p&gt;最近在docker（宿主机是centos虚拟机）里安装gitlab，发现随着时间的运行，虚拟机的内存持续走高，运行几个小时之后内存已经爆掉了，putty远程处理于假死状态。
+这个时候就需要查看内存进程，发现有10多个ruby进程在运行，最终定位到docker容器的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用到的指令：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;*查看内存使用情况 *&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ free -m
+$ top //shift+m按内存占用比排序
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;清理内存&lt;/em&gt;（效果不是很理想，最终只能强制关闭虚拟机0_0）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# sync 
+# echo 3 &amp;gt; /proc/sys/vm/drop_caches
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;top命令经常用来监控linux的系统状况，比如cpu、内存的使用，下面是各个数据的含义。&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>CentOS网络配置</title>
+      <link>/post/centos-network-config/</link>
+      <pubDate>Wed, 19 Oct 2016 10:25:00 +0000</pubDate>
+      
+      <guid>/post/centos-network-config/</guid>
+      <description>修改配置文件 # vi /etc/sysconfig/network-scripts/ifcfg-eth0 静态网络配置 BOOTPROTO=static ONBOOT=yes IPADDR=192.168.0.109 PREFIX=24 //子网掩码:255.255.255.0 GATEWAY=192.168.0.1 DNS1=192.168.0.1 BROADCAST=192.168.0.255 DEVICE=eth0 然后ESC退出编辑模式 保存退出 :wq! 或放弃修改 :q! 重启网络服</description>
+      
+    </item>
+    
+  </channel>
+</rss>

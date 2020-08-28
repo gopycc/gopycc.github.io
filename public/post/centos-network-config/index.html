@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>CentOS网络配置&nbsp;&ndash;&nbsp;GoPy&#43;</title><link rel="stylesheet" href="/css/core.min.8e37aa4bbbb66b6b7c09f85a2e32f6da679366495d864510e49e15cbf7ffed8b16ca3511e910ecd3ab899c53cdc913cc.css" integrity="sha384-jjeqS7u2a2t8CfhaLjL22meTZkldhkUQ5J4Vy/f/7YsWyjUR6RDs06uJnFPNyRPM"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="CentOS网络配置" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt /><span class="site name">GoPy+</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about/">About</a></nav></div></span></div><div class="site slogan"><span class="title">Webnotes about golang & python.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">CentOS网络配置</h1><p class="article date">2016-10-19 00:00<span class="reading-time"> • One minute to read</span></p></section><article class="article markdown-body"><p>修改配置文件</p>
+<pre><code># vi /etc/sysconfig/network-scripts/ifcfg-eth0
+</code></pre><p>静态网络配置</p>
+<pre><code>BOOTPROTO=static
+ONBOOT=yes
+IPADDR=192.168.0.109
+PREFIX=24 //子网掩码:255.255.255.0
+GATEWAY=192.168.0.1
+DNS1=192.168.0.1
+BROADCAST=192.168.0.255
+DEVICE=eth0
+</code></pre><p>然后ESC退出编辑模式</p>
+<p>保存退出</p>
+<pre><code>:wq!
+</code></pre><p>或放弃修改</p>
+<pre><code>:q!
+</code></pre><p>重启网络服务</p>
+<pre><code>service network restart
+</code></pre><p>查看IP地址</p>
+<pre><code>ip addr
+</code></pre></article><section class="article labels"><a class="category" href=/categories/linux/docker/>Linux/Docker</a><a class="tag" href=/tags/centos/>CentOS</a><a class="tag" href=/tags/network/>Network</a></section><section class="article author"><img class="avatar" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt><p class="name">gopycc</p><div class="bio">努力做好自已，其他的交给时间</div><div class="details"><a class="item" href="https://github.com/gopycc" target="_blank"><span class="iconfont icon-github"></span>&nbsp;gopycc</a></div>
+</section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/post/hyperv-vhdx-to-vhd/"><span class="iconfont icon-article"></span>Hyper-v虚拟机文件VHDX与VHD的格式转换</a></p><p><a class="link" href="/post/my-git-svn-clone/"><span class="iconfont icon-article"></span>使用git svn clone迁移svn仓库</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Gopy.cc</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

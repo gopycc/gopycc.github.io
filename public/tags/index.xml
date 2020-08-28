@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on GoPy&#43;</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    <lastBuildDate>Sun, 15 Apr 2018 23:30:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git版本管理</title>
+      <link>/tags/git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 15 Apr 2018 23:30:00 +0000</pubDate>
+      
+      <guid>/tags/git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Golang错误处理</title>
+      <link>/tags/golang%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 21 Sep 2017 15:28:00 +0000</pubDate>
+      
+      <guid>/tags/golang%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>/tags/windows/</link>
+      <pubDate>Fri, 04 Nov 2016 15:57:00 +0000</pubDate>
+      
+      <guid>/tags/windows/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>CentOS</title>
+      <link>/tags/centos/</link>
+      <pubDate>Fri, 21 Oct 2016 15:11:00 +0000</pubDate>
+      
+      <guid>/tags/centos/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>/tags/network/</link>
+      <pubDate>Fri, 21 Oct 2016 15:11:00 +0000</pubDate>
+      
+      <guid>/tags/network/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Hyper-V虚拟机</title>
+      <link>/tags/hyper-v%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+      <pubDate>Wed, 19 Oct 2016 10:46:00 +0000</pubDate>
+      
+      <guid>/tags/hyper-v%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>NetCore</title>
+      <link>/tags/netcore/</link>
+      <pubDate>Fri, 23 Sep 2016 14:45:00 +0000</pubDate>
+      
+      <guid>/tags/netcore/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>开发环境</title>
+      <link>/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Fri, 07 Aug 2015 12:29:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>NHibernate</title>
+      <link>/tags/nhibernate/</link>
+      <pubDate>Wed, 27 May 2015 01:06:00 +0000</pubDate>
+      
+      <guid>/tags/nhibernate/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

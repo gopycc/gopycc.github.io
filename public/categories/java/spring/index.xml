@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java/Spring on GoPy&#43;</title>
+    <link>/categories/java/spring/</link>
+    <description>Recent content in Java/Spring on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    
+        <atom:link href="/categories/java/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JAVA 环境变量批处理</title>
+      <link>/post/java-config-bash/</link>
+      <pubDate>Fri, 07 Aug 2015 12:29:00 +0000</pubDate>
+      
+      <guid>/post/java-config-bash/</guid>
+      <description>@echo off set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment set javahome=D:\Java\jdk1.7.0_40 echo. echo ************************************************************ echo * * echo * JDK 系统环境变量设置 * echo * * echo ************************************************************ echo. echo # 准备设置环境变量: JAVA_HOME=%javahome% echo # 注意: 如果JAVA_HOME存在,会被覆盖,此操作</description>
+      
+    </item>
+    
+  </channel>
+</rss>

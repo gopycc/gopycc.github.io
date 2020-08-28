@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Golang错误处理 on GoPy&#43;</title>
+    <link>/tags/golang%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in Golang错误处理 on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    <lastBuildDate>Thu, 21 Sep 2017 15:28:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/golang%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang统一处理HTTP请求中的异常捕获</title>
+      <link>/post/golang-wraphandle/</link>
+      <pubDate>Thu, 21 Sep 2017 15:28:00 +0000</pubDate>
+      
+      <guid>/post/golang-wraphandle/</guid>
+      <description>&lt;p&gt;&lt;em&gt;对所有注册的路由handle进行异常捕获&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;golang使用panic()产生异常，然后可以recover()来捕获到异常，否则主程序直接宕掉，这是我们不希望看到的。
+或者全程检查error，不主动抛出异常。即便这样，可能异常依然不能避免。&lt;/p&gt;
+&lt;p&gt;现在即要recover()，又不用在每个handle里面都去recover()一遍。&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

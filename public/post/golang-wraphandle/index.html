@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Golang统一处理HTTP请求中的异常捕获&nbsp;&ndash;&nbsp;GoPy&#43;</title><link rel="stylesheet" href="/css/core.min.8e37aa4bbbb66b6b7c09f85a2e32f6da679366495d864510e49e15cbf7ffed8b16ca3511e910ecd3ab899c53cdc913cc.css" integrity="sha384-jjeqS7u2a2t8CfhaLjL22meTZkldhkUQ5J4Vy/f/7YsWyjUR6RDs06uJnFPNyRPM"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Golang统一处理HTTP请求中的异常捕获" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt /><span class="site name">GoPy+</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about/">About</a></nav></div></span></div><div class="site slogan"><span class="title">Webnotes about golang & python.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Golang统一处理HTTP请求中的异常捕获</h1><p class="article date">2017-09-21 00:00<span class="reading-time"> • 2 minutes to read</span></p></section><article class="article markdown-body"><p><em>对所有注册的路由handle进行异常捕获</em></p>
+<p>golang使用panic()产生异常，然后可以recover()来捕获到异常，否则主程序直接宕掉，这是我们不希望看到的。
+或者全程检查error，不主动抛出异常。即便这样，可能异常依然不能避免。</p>
+<p>现在即要recover()，又不用在每个handle里面都去recover()一遍。</p>
+<p><em>从普通的路由注册代码开始</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">RegRouters</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">httprouter</span><span class="p">.</span><span class="nx">Router</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">Home</span><span class="p">)</span>
+	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/contact&#34;</span><span class="p">,</span> <span class="nx">Contact</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">Home</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">params</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic recover: %v\r\n&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="c1">//something
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">Contact</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">params</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic recover: %v\r\n&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="c1">//something
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>通过Wrap方法把处理方法包裹起来。wrap方法需要有一个handle类型的参数，同时返回值要能被httprouter接收</p>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">RegRouters</span><span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">httprouter</span><span class="p">.</span><span class="nx">Router</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nf">WrapHandle</span><span class="p">(</span><span class="nx">Home</span><span class="p">))</span>
+	<span class="nx">r</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/contact&#34;</span><span class="p">,</span> <span class="nf">WrapHandle</span><span class="p">(</span><span class="nx">Contact</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">WrapHandle</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Handle</span><span class="p">)</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Handle</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">p</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic recover: %v\r\n&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+		<span class="nf">handle</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>再把handle简化一下，增加一个context包，将handle的参数包裹起来，当然context还可以进一步处理。</p>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">WrapHandle</span><span class="p">(</span><span class="nx">handle</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">))</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Handle</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">p</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;panic recover: %v&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+		<span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">NewContext</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+		<span class="nf">handle</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">Home</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic recover: %v\r\n&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="c1">//something
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">Contact</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">pr</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">pr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic recover: %v\r\n&#34;</span><span class="p">,</span> <span class="nx">pr</span><span class="p">)</span>
+				<span class="nx">debug</span><span class="p">.</span><span class="nf">PrintStack</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="c1">//something
+</span><span class="c1"></span>	<span class="nx">id</span> <span class="p">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">FormInt64</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span> <span class="c1">//通过context从FORM取值，并转换为int64
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>简单的请求上下文的原型：</p>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">responseWriter</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span>
+	<span class="nx">request</span>        <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
+	<span class="nx">params</span>         <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span>
+	<span class="nx">Data</span>           <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">NewContext</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">params</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="o">*</span><span class="nx">Context</span> <span class="p">{</span>
+	<span class="nx">ctx</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">Context</span><span class="p">)</span>
+	<span class="nx">ctx</span><span class="p">.</span><span class="nx">responseWriter</span> <span class="p">=</span> <span class="nx">w</span>
+	<span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span> <span class="p">=</span> <span class="nx">r</span>
+	<span class="nx">ctx</span><span class="p">.</span><span class="nx">params</span> <span class="p">=</span> <span class="nx">params</span>
+	<span class="nx">ctx</span><span class="p">.</span><span class="nx">Data</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+	<span class="k">return</span> <span class="nx">ctx</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">Context</span><span class="p">)</span> <span class="nf">FormValue</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nf">FormValue</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">Context</span><span class="p">)</span> <span class="nf">FormInt64</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int64</span> <span class="p">{</span>
+	<span class="nx">value</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">FormValue</span><span class="p">(</span><span class="nx">name</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">value</span>
+<span class="p">}</span>
+
+</code></pre></div></article><section class="article labels"><a class="category" href=/categories/golang/>Golang</a><a class="tag" href=/tags/golang%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/>Golang错误处理</a></section><section class="article author"><img class="avatar" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt><p class="name">gopycc</p><div class="bio">努力做好自已，其他的交给时间</div><div class="details"><a class="item" href="https://github.com/gopycc" target="_blank"><span class="iconfont icon-github"></span>&nbsp;gopycc</a></div>
+</section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/post/git-talk/"><span class="iconfont icon-article"></span>分享一点Git的感受与总结</a></p><p><a class="link" href="/post/win10-update-event-129/"><span class="iconfont icon-article"></span>win10周年更新后程序各种卡死，进程无法结束怎么破？</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Gopy.cc</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

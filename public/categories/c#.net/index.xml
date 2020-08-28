@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>C#.Net on GoPy&#43;</title>
+    <link>/categories/c#.net/</link>
+    <description>Recent content in C#.Net on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    <lastBuildDate>Fri, 23 Sep 2016 14:45:00 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/c#.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.NET 4.5&#43;项目迁移.NET Core的问题记录</title>
+      <link>/post/net45-to-netcore/</link>
+      <pubDate>Fri, 23 Sep 2016 14:45:00 +0000</pubDate>
+      
+      <guid>/post/net45-to-netcore/</guid>
+      <description>这几天试着把目前的开发框架迁移到新的.net core平台，中间遇到的问题在这里简单记录一下。 迁移过程遇到的最大的问题IOC容器。我目前使用的</description>
+      
+    </item>
+    
+    <item>
+      <title>使用FluentNHibernate出现列“ReservedWord”不属于表 ReservedWords</title>
+      <link>/post/fluentnhibernate-reservedword/</link>
+      <pubDate>Wed, 27 May 2015 01:06:00 +0000</pubDate>
+      
+      <guid>/post/fluentnhibernate-reservedword/</guid>
+      <description>&lt;p&gt;NHibernate+FluentNHibernate+MySql 运行时黄页显示下边的异常，项目中找了半天没出现过这个列的关键字。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[ArgumentException: 列“ReservedWord”不属于表 ReservedWords。]
+   System.Data.DataRow.GetDataColumn(String columnName) +5310119
+   System.Data.DataRow.get_Item(String columnName) +13
+   NHibernate.Dialect.Schema.AbstractDataBaseSchema.GetReservedWords() +170
+   NHibernate.Tool.hbm2ddl.SchemaMetadataUpdater.GetReservedWords(Dialect dialect, IConnectionHelper connectionHelper) +100
+   NHibernate.Tool.hbm2ddl.SchemaMetadataUpdater.Update(ISessionFactory sessionFactory) +78
+   NHibernate.Impl.SessionFactoryImpl..ctor(Configuration cfg, IMapping mapping, Settings settings, EventListeners listeners) +700
+   NHibernate.Cfg.Configuration.BuildSessionFactory() +104
+   FluentNHibernate.Cfg.FluentConfiguration.BuildSessionFactory() in c:\work\coding\fluentNhibernate\src\FluentNHibernate\Cfg\FluentConfiguration.cs:230
+
+[FluentConfigurationException: An invalid or incomplete configuration was used while creating a SessionFactory. Check PotentialReasons collection, and InnerException for more detail.]
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

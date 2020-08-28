@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Debug/Tips on GoPy&#43;</title>
+    <link>/categories/debug/tips/</link>
+    <description>Recent content in Debug/Tips on GoPy&#43;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2020 Gopy.cc</copyright>
+    
+        <atom:link href="/categories/debug/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>win10周年更新后程序各种卡死，进程无法结束怎么破？</title>
+      <link>/post/win10-update-event-129/</link>
+      <pubDate>Fri, 04 Nov 2016 15:57:00 +0000</pubDate>
+      
+      <guid>/post/win10-update-event-129/</guid>
+      <description>最近THINKPAD T460P更新了WIN10周年版后程序各种卡死，运行一段时间，各种程序就开始崩溃，进程无法结束，最终只能强制关机。 这个B</description>
+      
+    </item>
+    
+  </channel>
+</rss>

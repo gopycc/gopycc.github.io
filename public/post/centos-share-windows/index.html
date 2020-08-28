@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>CentOS访问Windows共享文件夹&nbsp;&ndash;&nbsp;GoPy&#43;</title><link rel="stylesheet" href="/css/core.min.8e37aa4bbbb66b6b7c09f85a2e32f6da679366495d864510e49e15cbf7ffed8b16ca3511e910ecd3ab899c53cdc913cc.css" integrity="sha384-jjeqS7u2a2t8CfhaLjL22meTZkldhkUQ5J4Vy/f/7YsWyjUR6RDs06uJnFPNyRPM"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="CentOS访问Windows共享文件夹" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt /><span class="site name">GoPy+</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about/">About</a></nav></div></span></div><div class="site slogan"><span class="title">Webnotes about golang & python.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">CentOS访问Windows共享文件夹</h1><p class="article date">2016-10-21 00:00<span class="reading-time"> • One minute to read</span></p></section><article class="article markdown-body"><p><strong>1. 在地址栏中输入下面内容:</strong>
+smb://Windows IP/Share folder name，smb为Server Message Block协议的简称，是一种IBM协议，运行在TCP/IP协议之上。</p>
+<p>从Windows 95开始，Microsoft Windows都提供了Server和Client的SMB协议支持，Microsoft为Internet提供了SMB开源版本，及CIFS(Common Internet File System)，通用文件系统。</p>
+<p><strong>2. 将Windows的共享文件夹挂载到本地</strong></p>
+<p>在终端中输入命令</p>
+<pre><code>cd /
+mkdir myShare
+mount -t cifs -o username=&quot;administrator&quot;,password=&quot;123456&quot; //192.168.1.1/ShareFolder /myShare
+</code></pre><p>注意命令行中的空格和逗号，空密码也可以。</p>
+<p>此命令就是将192.168.1.1上的共享文件夹ShareFolder 挂载到本地的/mnt/MyShare文件夹，执行完，就可在MyShare里看到ShareFolder里的内容。</p>
+<p>删除挂载用命令：</p>
+<blockquote>
+<p>umount /myShare</p>
+</blockquote>
+<p><strong>3. 开机自动挂载</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vi /etc/fstab
+//192.168.1.1/ShareFolder  /myShare  cifs  defaults,username<span class="o">=</span>administrator,password<span class="o">=</span><span class="m">123456</span>  <span class="m">0</span>  <span class="m">2</span>
+</code></pre></div><p>保存退出</p>
+<p><strong>4. 创建软链接</strong></p>
+<pre><code>ln -s /myShare/source /data/dist
+</code></pre></article><section class="article labels"><a class="category" href=/categories/linux/docker/>Linux/Docker</a><a class="tag" href=/tags/centos/>CentOS</a><a class="tag" href=/tags/network/>Network</a></section><section class="article author"><img class="avatar" src="https://pic.cnblogs.com/avatar/19296/20150525185700.png" alt><p class="name">gopycc</p><div class="bio">努力做好自已，其他的交给时间</div><div class="details"><a class="item" href="https://github.com/gopycc" target="_blank"><span class="iconfont icon-github"></span>&nbsp;gopycc</a></div>
+</section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/post/git-branching-model/"><span class="iconfont icon-article"></span>GIT分支管理模型</a></p><p><a class="link" href="/post/centos-top/"><span class="iconfont icon-article"></span>CentOS详解TOP命令</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Gopy.cc</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>
